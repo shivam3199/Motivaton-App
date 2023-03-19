@@ -1,24 +1,52 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import Quote from "./Quote";
+
+const url = "https://type.fit/api/quotes";
 
 function App() {
+  const [loading, setLoading] = useState(true);
+  const [quotes, setQuotes] = useState([]);
+  const [index, setIndex] = useState(0);
+
+  const getData = async () => {
+    const response = await fetch(url);
+    const myData = await response.json();
+    if (response.status !== 200) {
+      throw new Error("Error Fetching Data");
+    }
+    return myData;
+  };
+
+  const getRandomValue = () => {
+    let randomValue = Math.floor(Math.random() * quotes.length);
+    if (randomValue === index) {
+      getRandomValue();
+    }
+    setIndex(randomValue);
+  };
+
+  useEffect(() => {
+    getData()
+      .then((myData) => {
+        setQuotes(myData);
+        setLoading(false);
+        setIndex(Math.floor(Math.random() * myData.length));
+      })
+      .catch((error) => console.log(error));
+  }, []);
+
+  if (loading) {
+    return (
+      <section className="section loading">
+        <h2>Loading...</h2>
+      </section>
+    );
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Quote quotes={quotes} index={index} getRandomValue={getRandomValue} />
+    </>
   );
 }
 
