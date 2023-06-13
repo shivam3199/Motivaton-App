@@ -1,5 +1,6 @@
 import React from "react";
 import { CgTwitter } from "react-icons/cg";
+import {AiOutlineInstagram} from "react-icons/ai";
 
 const Buttons = ({ author, text, getRandomValue }) => {
   let link = `https://twitter.com/intent/tweet?text=${text + " - " + author}`;
@@ -42,6 +43,7 @@ const Buttons = ({ author, text, getRandomValue }) => {
         href="https://www.instagram.com/shivam_raskonda/"
         target="-blank"
       >
+        <AiOutlineInstagram />
         Shivam Raskonda
       </a>
     </div>

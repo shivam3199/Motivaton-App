@@ -134,6 +134,11 @@ button:hover {
   bottom: 1%;
   transform: translate(-50%);
   font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+}
+.Shivam svg {
+  margin-right: 5px; /* Adjust as needed */
 }
 
 .Shivam:hover {
