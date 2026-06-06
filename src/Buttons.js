@@ -40,7 +40,7 @@ const Buttons = ({ author, text, getRandomValue }) => {
 
       <a
         className="Shivam"
-        href="https://www.instagram.com/shivam_raskonda/"
+        href="https://www.instagram.com/shivam__raskonda/"
         target="-blank"
       >
         <AiOutlineInstagram />
