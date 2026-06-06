@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Quote from "./Quote";
 
-const url = "https://type.fit/api/quotes";
+const url = "/api/quotes";
 
 function App() {
   const [loading, setLoading] = useState(true);
